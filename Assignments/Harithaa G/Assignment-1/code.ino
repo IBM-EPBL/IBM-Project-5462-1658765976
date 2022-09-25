@@ -37,10 +37,7 @@ void loop()
   }
   }
 
-
-
-
-    //Temperate Sensor
+ //Temperate Sensor
   double a= analogRead(A0);
   double t=(((a/1024)*5)-0.5)*100;
   Serial.print("Temp Value: ");
