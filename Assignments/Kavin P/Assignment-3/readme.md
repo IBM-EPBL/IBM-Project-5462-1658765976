@@ -25,5 +25,5 @@ if __name__ == '__main__':
         setup()
         try:
                 loop()
-        except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the destroy() will be  executed.
+        except KeyboardInterrupt:  #'Ctrl+C' is pressed, the destroy() will be  executed.
                 endprogram()
