@@ -27,7 +27,7 @@
 *   The system automatically closes the gas valve.
 
 
-## **Python Automation -** [Python Code]()
+## **Python Automation -** [Python Code](https://github.com/IBM-EPBL/IBM-Project-5462-1658765976/tree/main/Project%20Development%20Phase/Sprint%201/PNT2022TMID19226%20-%20Python%20Automation)
 ### Install the required python packages mentioned in the requirements.txt
 >  pip install -r requirements.txt
 
