@@ -3,4 +3,4 @@ Gas Leakage monitoring &amp; Alerting system for Industries
 
 ## Live Demo
 
-[MONITOR-GAS-LEAKAGE](https://monitor-gas-leakage/web.app)
+[MONITOR-GAS-LEAKAGE](https://monitor-gas-leakage.web.app)
