@@ -2,25 +2,28 @@ import React, { useState } from "react"
 import { Alert } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom"
 import { useUserAuth } from "../context/UserAuthContext"
+import "./styles.css"
 
 const Signup = () => {
   const [email, setEmail] = useState("")
   const [error, setError] = useState("")
   const [password, setPassword] = useState("")
-  const { signUp } = useUserAuth()
+  const { user, signUp } = useUserAuth()
   const navigate = useNavigate()
   const createUser = async (e) => {
     e.preventDefault()
     setError("")
     try {
       await signUp(email, password)
-      navigate("/")
     } catch (err) {
       setError(err.message)
     }
   }
+  const checkUserCreated = () => {
+    if (user) navigate("/dashboard")
+  }
   return (
-    <div className="main">
+    <div className="main" onLoad={checkUserCreated()}>
       <div className="background">
         <div className="shape"></div>
         <div className="shape"></div>
@@ -29,7 +32,7 @@ const Signup = () => {
         <h3>SignUp Here</h3>
         {error && <Alert variant="danger">{error}</Alert>}
 
-        <label for="username">Username</label>
+        <label htmlFor="username">Username</label>
         <input
           type="text"
           placeholder="Email or Phone"
@@ -37,7 +40,7 @@ const Signup = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           placeholder="Password"

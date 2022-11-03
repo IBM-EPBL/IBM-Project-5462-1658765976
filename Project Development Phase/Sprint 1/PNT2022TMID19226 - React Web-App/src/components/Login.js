@@ -1,16 +1,19 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { Alert } from "react-bootstrap"
 // import GoogleButton from "react-google-button"
 import { useUserAuth } from "../context/UserAuthContext"
-import "./Login.css"
+import "./styles.css"
 
 const Login = () => {
   const [email, setEmail] = useState("")
   const [error, setError] = useState("")
   const [password, setPassword] = useState("")
-  const { login } = useUserAuth()
+  const { user, login } = useUserAuth()
   const navigate = useNavigate()
+  useEffect(() => {
+    if (user) navigate("/dashboard")
+  }, [])
 
   const loginUser = async (e) => {
     e.preventDefault()
@@ -22,8 +25,11 @@ const Login = () => {
       setError(err.message)
     }
   }
+  const checkLogedIn = () => {
+    if (user) navigate("/dashboard")
+  }
   return (
-    <div className="main">
+    <div className="main" onLoad={checkLogedIn()}>
       <div className="background">
         <div className="shape"></div>
         <div className="shape"></div>
@@ -32,7 +38,7 @@ const Login = () => {
         <h3>Login Here</h3>
         {error && <Alert variant="danger">{error}</Alert>}
 
-        <label for="username">Username</label>
+        <label htmlFor="username">Username</label>
         <input
           type="text"
           placeholder="Email or Phone"
@@ -40,7 +46,7 @@ const Login = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           placeholder="Password"

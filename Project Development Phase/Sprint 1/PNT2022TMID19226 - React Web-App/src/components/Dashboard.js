@@ -1,5 +1,3 @@
-import React from "react";
-
 const Dashboard = () => {
   return (
     <div>
@@ -13,10 +11,10 @@ const Dashboard = () => {
           left: 0,
           position: "absolute",
         }}
-        src="https://node-red-feuln-2022-10-08.au-syd.mybluemix.net/ui/#!/0?socketid=XuyFEHMazl422ecIAAA0"
+        src="https://node-red-feuln-2022-10-08.au-syd.mybluemix.net/ui/"
       ></iframe>
     </div>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard

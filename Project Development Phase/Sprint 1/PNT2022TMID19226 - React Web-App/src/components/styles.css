@@ -114,3 +114,21 @@ input {
 .social i {
   margin-right: 4px;
 }
+.signout {
+  position: fixed;
+  right: 0;
+  padding: 10px 20px;
+  font-weight: 900;
+  margin: 1vh 1vw;
+  color: white;
+  border-radius: 5px;
+  background-color: rgb(202, 56, 56);
+  cursor: pointer;
+  z-index: 10;
+}
+.signout:hover {
+  background-color: red;
+}
+.hidden {
+  visibility: hidden;
+}

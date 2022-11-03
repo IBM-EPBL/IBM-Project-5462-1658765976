@@ -1,41 +1,50 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { auth } from "../firebase/firebaseConfig.js";
+import { createContext, useContext, useEffect, useState } from "react"
+import { auth } from "../firebase/firebaseConfig.js"
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-} from "firebase/auth";
+  sendEmailVerification,
+} from "firebase/auth"
 
-const userAuthContext = createContext();
+const userAuthContext = createContext()
 export const UserAuthContextProvider = ({ children }) => {
-  const [user, setUser] = useState("");
-
+  const [user, setUser] = useState("")
   const signUp = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
-  };
+    return createUserWithEmailAndPassword(auth, email, password).then(
+      (user) => {
+        if (user.user && user.user.emailVerified === false) {
+          sendEmailVerification(user.user)
+          console.log("Verification Email Sent")
+        }
+      }
+    )
+  }
   const login = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password);
-  };
+    return signInWithEmailAndPassword(auth, email, password)
+  }
 
-  const signOut = async () => {
-    await signOut(auth);
-  };
+  const signOutGoogle = async () => {
+    await signOut(auth)
+  }
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-    });
+      setUser(currentUser)
+    })
     return () => {
-      unsubscribe();
-    };
-  }, []);
+      unsubscribe()
+    }
+  }, [])
   return (
-    <userAuthContext.Provider value={{ user, signUp, login, signOut }}>
+    <userAuthContext.Provider
+      value={{ user, signUp, login, signOut: signOutGoogle }}
+    >
       {children}
     </userAuthContext.Provider>
-  );
-};
+  )
+}
 export const useUserAuth = () => {
-  return useContext(userAuthContext);
-};
+  return useContext(userAuthContext)
+}
