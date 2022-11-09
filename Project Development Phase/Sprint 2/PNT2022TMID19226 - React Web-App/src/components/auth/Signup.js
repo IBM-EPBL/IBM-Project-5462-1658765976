@@ -1,8 +1,7 @@
 import React, { useState } from "react"
 import { Alert } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom"
-import { useUserAuth } from "../context/UserAuthContext"
-import "./styles.css"
+import { useUserAuth } from "../../context/UserAuthContext"
 
 const Signup = () => {
   const [email, setEmail] = useState("")

@@ -1,5 +1,4 @@
-import { useUserAuth } from "../context/UserAuthContext"
-import "./styles.css"
+import { useUserAuth } from "../../context/UserAuthContext"
 
 const SignOut = () => {
   const { user, signOut } = useUserAuth()

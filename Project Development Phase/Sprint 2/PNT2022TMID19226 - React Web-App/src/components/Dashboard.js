@@ -2,6 +2,7 @@ const Dashboard = () => {
   return (
     <div>
       <iframe
+        referrerPolicy="no-referrer"
         title="Node-RED Dashboard"
         style={{
           width: "100%",

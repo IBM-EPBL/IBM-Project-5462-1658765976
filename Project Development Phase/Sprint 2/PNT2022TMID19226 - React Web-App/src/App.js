@@ -1,12 +1,15 @@
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom"
-import Login from "./components/Login"
-import SignUp from "./components/Signup"
-import Dashboard from "./components/Dashboard"
-import ProtectedRoute from "./components/ProtectedRoute"
-import "bootstrap/dist/css/bootstrap.min.css"
 import { UserAuthContextProvider } from "./context/UserAuthContext"
-import VerifyEmail from "./components/VerifyEmail"
-import SignOut from "./components/SignOut"
+import ProtectedRoute from "./components/protected/ProtectedRoute"
+import SignUp from "./components/auth/Signup"
+import Login from "./components/auth/Login"
+import VerifyEmail from "./components/auth/VerifyEmail"
+import SignOut from "./components/auth/SignOut"
+import Dashboard from "./components/Dashboard"
+
+import "bootstrap/dist/css/bootstrap.min.css"
+import "./css/styles.css"
+
 function App() {
   return (
     <Router>

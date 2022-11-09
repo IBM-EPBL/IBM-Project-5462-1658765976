@@ -1,9 +1,6 @@
-import React, { useState } from "react"
-import { Link, Navigate, useNavigate } from "react-router-dom"
-import { Alert } from "react-bootstrap"
+import { useNavigate } from "react-router-dom"
 // import GoogleButton from "react-google-button"
-import { useUserAuth } from "../context/UserAuthContext"
-import "./styles.css"
+import { useUserAuth } from "../../context/UserAuthContext"
 
 const VerifyEmail = () => {
   const navigate = useNavigate()

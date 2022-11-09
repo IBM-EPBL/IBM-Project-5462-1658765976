@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { Alert } from "react-bootstrap"
 // import GoogleButton from "react-google-button"
-import { useUserAuth } from "../context/UserAuthContext"
-import "./styles.css"
+import { useUserAuth } from "../../context/UserAuthContext"
 
 const Login = () => {
   const [email, setEmail] = useState("")
