@@ -4,11 +4,13 @@ import { Alert } from "react-bootstrap"
 import GoogleButton from "react-google-button"
 import { useUserAuth } from "../../context/UserAuthContext"
 
+import facebookIcon from "../../images/facebook.png"
+
 const Signup = () => {
   const [email, setEmail] = useState("")
   const [error, setError] = useState("")
   const [password, setPassword] = useState("")
-  const { user, signUp, signInWithGoogle } = useUserAuth()
+  const { user, signUp, signInWithGoogle, signInWithFacebook } = useUserAuth()
   const navigate = useNavigate()
   const createUser = async (e) => {
     e.preventDefault()
@@ -50,6 +52,16 @@ const Signup = () => {
 
         <button className="button">Sign Up</button>
         <GoogleButton className="m-auto my-3" onClick={signInWithGoogle} />
+        <button
+          className="m-auto my-3 social-button"
+          type="button"
+          onClick={signInWithFacebook}
+        >
+          <div className="social-button-svg">
+            <img src={facebookIcon} width="48px" />
+          </div>
+          <span>Sign in with Facebook</span>
+        </button>
         <div className="text-center p-1 m-auto m-1 ">
           Already have an account? <Link to="/">Log In</Link>
         </div>

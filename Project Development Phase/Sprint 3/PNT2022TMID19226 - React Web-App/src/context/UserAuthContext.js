@@ -1,5 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react"
-import { auth, googleAuthProvider } from "../firebase/firebaseConfig.js"
+import {
+  auth,
+  googleAuthProvider,
+  facebookAuthProvider,
+} from "../firebase/firebaseConfig.js"
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -28,12 +32,28 @@ export const UserAuthContextProvider = ({ children }) => {
     await signInWithPopup(auth, googleAuthProvider)
   }
 
+  const signInWithFacebook = async () => {
+    await signInWithPopup(auth, facebookAuthProvider).then((user) => {
+      if (user.user && user.user.emailVerified === false) {
+        sendEmailVerification(user.user)
+        console.log("Verification Email Sent")
+      }
+    })
+  }
+
   const login = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password)
   }
 
   const signOutGoogle = async () => {
     await signOut(auth)
+  }
+
+  const sendVerificationEmail = () => {
+    if (user && user.emailVerified === false) {
+      sendEmailVerification(user)
+      console.log("Verification Email Sent")
+    }
   }
 
   useEffect(() => {
@@ -46,7 +66,15 @@ export const UserAuthContextProvider = ({ children }) => {
   }, [])
   return (
     <userAuthContext.Provider
-      value={{ user, signUp, login, signOut: signOutGoogle, signInWithGoogle }}
+      value={{
+        user,
+        signUp,
+        login,
+        signOut: signOutGoogle,
+        signInWithGoogle,
+        signInWithFacebook,
+        sendVerificationEmail,
+      }}
     >
       {children}
     </userAuthContext.Provider>
