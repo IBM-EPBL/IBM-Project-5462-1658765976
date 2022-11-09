@@ -1,13 +1,14 @@
 import React, { useState } from "react"
-import { Alert } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom"
+import { Alert } from "react-bootstrap"
+import GoogleButton from "react-google-button"
 import { useUserAuth } from "../../context/UserAuthContext"
 
 const Signup = () => {
   const [email, setEmail] = useState("")
   const [error, setError] = useState("")
   const [password, setPassword] = useState("")
-  const { user, signUp } = useUserAuth()
+  const { user, signUp, signInWithGoogle } = useUserAuth()
   const navigate = useNavigate()
   const createUser = async (e) => {
     e.preventDefault()
@@ -27,7 +28,7 @@ const Signup = () => {
         <div className="shape"></div>
         <div className="shape"></div>
       </div>
-      <form onSubmit={createUser}>
+      <form className="form" onSubmit={createUser}>
         <h3>SignUp Here</h3>
         {error && <Alert variant="danger">{error}</Alert>}
 
@@ -48,17 +49,10 @@ const Signup = () => {
         />
 
         <button className="button">Sign Up</button>
-        <div className="p-4 box mt-3 text-center">
+        <GoogleButton className="m-auto my-3" onClick={signInWithGoogle} />
+        <div className="text-center p-1 m-auto m-1 ">
           Already have an account? <Link to="/">Log In</Link>
         </div>
-        {/* <div class="social">
-          <div className="go">
-            <i cclassNamelass="fab fa-google"></i> Google
-          </div>
-          <div className="fb">
-            <i className="fab fa-facebook"></i> Facebook
-          </div>
-        </div> */}
       </form>
     </div>
   )
