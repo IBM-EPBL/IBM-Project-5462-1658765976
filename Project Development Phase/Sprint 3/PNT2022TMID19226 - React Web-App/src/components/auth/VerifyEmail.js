@@ -4,12 +4,16 @@ import { useUserAuth } from "../../context/UserAuthContext"
 
 const VerifyEmail = () => {
   const navigate = useNavigate()
-  const { user } = useUserAuth()
+  const { user, sendVerificationEmail } = useUserAuth()
+
   const checkEmailVerified = () => {
     if (!user) navigate("/")
     if (user && user.emailVerified) {
       navigate("/dashboard")
     }
+  }
+  const refresh = () => {
+    window.location.reload(false)
   }
   return (
     <div className="main" onLoad={checkEmailVerified()}>
@@ -17,11 +21,10 @@ const VerifyEmail = () => {
         <div className="shape"></div>
         <div className="shape"></div>
       </div>
-      <form>
+      <div className="form ">
         <div
           style={{
             textAlign: "center",
-            height: "100vh",
             veritcalAlign: "center",
             paddingTop: "50%",
             color: "white",
@@ -36,11 +39,14 @@ const VerifyEmail = () => {
             <br />
             Check Spam Too!
           </p>
-          <div className="button" onClick={checkEmailVerified}>
+          <div className="button" onClick={refresh}>
             Refresh
           </div>
+          <div className="button" onClick={() => sendVerificationEmail()}>
+            Resend Verification Email
+          </div>
         </div>
-      </form>
+      </div>
     </div>
   )
 }
