@@ -129,6 +129,21 @@ input {
 .signout:hover {
   background-color: red;
 }
+.request {
+  position: fixed;
+  right: 0;
+  padding: 10px 20px;
+  font-weight: 900;
+  margin: 1vh 8rem;
+  color: white;
+  border-radius: 5px;
+  background-color: rgb(56, 56, 202);
+  cursor: pointer;
+  z-index: 10;
+}
+.request:hover {
+  background-color: blue;
+}
 .hidden {
   visibility: hidden;
 }
