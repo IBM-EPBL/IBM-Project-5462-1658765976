@@ -11,6 +11,9 @@ const ServiceRequest = () => {
   const requestService = () => {
     navigate("/requested")
   }
+  const openDashboard = () => {
+    navigate("/dashboard")
+  }
   return (
     <div className="main" onLoad={checkEmailVerified()}>
       <div className="background">
@@ -29,10 +32,13 @@ const ServiceRequest = () => {
           }}
         >
           <div className="button" onClick={requestService}>
-            Request For Service
+            Request for Service
           </div>
           <div className="button" onClick={requestService}>
-            Request Scaling
+            Request for Scaling Up
+          </div>
+          <div className="button" onClick={openDashboard}>
+            Back to Dashboard
           </div>
         </div>
       </div>
