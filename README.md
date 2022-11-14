@@ -16,6 +16,8 @@
 *   The user can view the status of the gas sensors.
 *   The user is prompted with an alert message incase of any gas leakage detection.
 *   The user is notified with a alert SMS message to mobile.
+
+
 ##**Screenshots**
 ### 1.   Web dashboard
 ![](https://raw.githubusercontent.com/IBM-EPBL/IBM-Project-5462-1658765976/main/Final%20Deliverables/Web%20App/Web%20Dashboard.png?raw=true)
