@@ -4,8 +4,10 @@
 ## **About :** 
 > ##### Gas leakage is the main problem of the industrial sectors working with highly inflammable gases. Gas Leakage fires took an increasing toll on lives and property in recent years. The leakage of gases only can be detected by human nearby and if there are no human nearby, it cannot be detected. But sometimes it cannot be detected by human who has a low sense of smell. Therefore, in such cases Industries are in need of a Gas Leakage Detection System for gas leakage identification and to perform certain measures in order to reduce the impact incase of any fire and to alert people/workers about the gas leakage.
 
-> ## **Demo Video** *(Click below image to play video)*
-[![Demo Video](https://i.ibb.co/b35DM4Z/PNT2022-TMID19226.png)](https://github.com/IBM-EPBL/IBM-Project-5462-1658765976/blob/main/Final%20Deliverables/PNT2022TMID19226_Final-Demo.mp4)
+## **Demo Video - Gas Leakage Monitoring and Alerting System for Industries**
+https://user-images.githubusercontent.com/79743324/201689797-893dc911-9cc3-4712-a8ff-402cff11e598.mp4
+
+
 
 ## **Web-App -**  [Gas Leakage Monitoring and Alerting System for Industries](https://monitor-gas-leakage.web.app/)
 > ### *(Click on the above link to open web-app)*
@@ -18,7 +20,7 @@
 *   The user is notified with a alert SMS message to mobile.
 
 
-##**Screenshots**
+## **Screenshots**
 ### 1.   Web dashboard
 ![](https://raw.githubusercontent.com/IBM-EPBL/IBM-Project-5462-1658765976/main/Final%20Deliverables/Web%20App/Web%20Dashboard.png?raw=true)
 ### 2.   Web Alert
