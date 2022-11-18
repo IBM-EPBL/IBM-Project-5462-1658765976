@@ -19,6 +19,9 @@ https://user-images.githubusercontent.com/79743324/201689797-893dc911-9cc3-4712-
 *   The user is prompted with an alert message incase of any gas leakage detection.
 *   The user is notified with a alert SMS message to mobile.
 
+> ## Note
+ Due to unavailability of premium subscription of Twilio account, mobile notification SMS will only be sent to one of the users currently logged in to Web App.
+
 
 ## **Screenshots**
 ### 1.   Web dashboard
