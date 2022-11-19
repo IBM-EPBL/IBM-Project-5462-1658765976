@@ -29,6 +29,7 @@ export const UserAuthContextProvider = ({ children }) => {
       } else {
         const nodeRef = child(ref(db, "users"), key)
         set(nodeRef, { ...userDetails })
+        setCurrentUser(userDetails.email)
       }
     })
   }
@@ -38,7 +39,7 @@ export const UserAuthContextProvider = ({ children }) => {
       if (!snapshot.exists()) {
         alert("User Not Exists")
       } else {
-        const nodeRef = child(ref(db, "currentUser"), key)
+        const nodeRef = ref(db, "currentUser")
         const phone = snapshot.val().mobile
         set(nodeRef, { phone })
       }
