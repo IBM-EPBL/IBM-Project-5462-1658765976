@@ -10,13 +10,14 @@ const Signup = () => {
   const [email, setEmail] = useState("")
   const [error, setError] = useState("")
   const [password, setPassword] = useState("")
+  const [mobile, setMobile] = useState("")
   const { user, signUp, signInWithGoogle, signInWithFacebook } = useUserAuth()
   const navigate = useNavigate()
   const createUser = async (e) => {
     e.preventDefault()
     setError("")
     try {
-      await signUp(email, password)
+      await signUp(email, password, mobile)
     } catch (err) {
       setError(err.message)
     }
@@ -39,6 +40,7 @@ const Signup = () => {
           type="text"
           placeholder="Email or Phone"
           id="username"
+          required
           onChange={(e) => setEmail(e.target.value)}
         />
 
@@ -47,7 +49,18 @@ const Signup = () => {
           type="password"
           placeholder="Password"
           id="password"
+          required
           onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <label htmlFor="phone">Mobile Number</label>
+        <input
+          type="tel"
+          placeholder="Enter 10 digit Mobile Number"
+          id="phone"
+          pattern="[0-9]{10}"
+          required
+          onChange={(e) => setMobile(e.target.value)}
         />
 
         <button className="button">Sign Up</button>

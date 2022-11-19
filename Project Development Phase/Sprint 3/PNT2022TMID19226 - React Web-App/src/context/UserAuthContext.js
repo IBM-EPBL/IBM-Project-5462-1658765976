@@ -3,7 +3,10 @@ import {
   auth,
   googleAuthProvider,
   facebookAuthProvider,
-} from "../firebase/firebaseConfig.js"
+  db,
+} from "../firebase/firebaseConfig"
+
+import { ref, child, get, set } from "firebase/database"
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -17,13 +20,39 @@ const userAuthContext = createContext()
 export const UserAuthContextProvider = ({ children }) => {
   const [user, setUser] = useState("")
 
-  const signUp = (email, password) => {
+  const addUser = async (userDetails) => {
+    // Add User
+    const key = userDetails.email.replace(".", "_")
+    get(child(ref(db, "users"), key)).then((snapshot) => {
+      if (snapshot.exists()) {
+        alert("User Exists")
+      } else {
+        const nodeRef = child(ref(db, "users"), key)
+        set(nodeRef, { ...userDetails })
+      }
+    })
+  }
+  const setCurrentUser = async (email) => {
+    const key = email.replace(".", "_")
+    get(child(ref(db, "users"), key)).then((snapshot) => {
+      if (!snapshot.exists()) {
+        alert("User Not Exists")
+      } else {
+        const nodeRef = child(ref(db, "currentUser"), key)
+        const phone = snapshot.val().mobile
+        set(nodeRef, { phone })
+      }
+    })
+  }
+
+  const signUp = (email, password, mobile) => {
     return createUserWithEmailAndPassword(auth, email, password).then(
       (user) => {
         if (user.user && user.user.emailVerified === false) {
           sendEmailVerification(user.user)
           console.log("Verification Email Sent")
         }
+        addUser({ email, mobile })
       }
     )
   }
@@ -42,6 +71,7 @@ export const UserAuthContextProvider = ({ children }) => {
   }
 
   const login = (email, password) => {
+    setCurrentUser(email)
     return signInWithEmailAndPassword(auth, email, password)
   }
 
