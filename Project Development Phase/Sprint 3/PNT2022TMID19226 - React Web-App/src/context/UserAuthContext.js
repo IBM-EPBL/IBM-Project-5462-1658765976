@@ -22,7 +22,7 @@ export const UserAuthContextProvider = ({ children }) => {
 
   const addUser = async (userDetails) => {
     // Add User
-    const key = userDetails.email.replace(".", "_")
+    const key = userDetails.email.replaceAll(".", "_")
     get(child(ref(db, "users"), key)).then((snapshot) => {
       if (snapshot.exists()) {
         alert("User Exists")
@@ -34,7 +34,7 @@ export const UserAuthContextProvider = ({ children }) => {
     })
   }
   const setCurrentUser = async (email) => {
-    const key = email.replace(".", "_")
+    const key = email.replaceAll(".", "_")
     get(child(ref(db, "users"), key)).then((snapshot) => {
       if (!snapshot.exists()) {
         alert("User Not Exists")
